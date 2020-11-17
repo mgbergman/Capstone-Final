@@ -14,6 +14,14 @@ import { UserEditComponent } from '../app/user/user-edit/user-edit.component';
 import { UserCreateComponent } from './user/user-create/user-create.component';
 import { UserDetailComponent } from './user/user-detail/user-detail.component';
 import { MenuitemComponent } from './menu/menuitem/menuitem.component';
+import { VendorListComponent } from './vendor/vendor-list/vendor-list.component';
+import { VendorEditComponent } from './vendor/vendor-edit/vendor-edit.component';
+import { VendorDetailComponent } from './vendor/vendor-detail/vendor-detail.component';
+import { VendorCreateComponent } from './vendor/vendor-create/vendor-create.component';
+import { ProductListComponent } from './product/product-list/product-list.component';
+import { ProductCreateComponent } from './product/product-create/product-create.component';
+import { ProductEditComponent } from './product/product-edit/product-edit.component';
+import { ProductDetailComponent } from './product/product-detail/product-detail.component';
 
 
 @NgModule({
@@ -27,7 +35,15 @@ import { MenuitemComponent } from './menu/menuitem/menuitem.component';
     UserEditComponent,
     UserCreateComponent,
     UserDetailComponent,
-    MenuitemComponent
+    MenuitemComponent,
+    VendorListComponent,
+    VendorEditComponent,
+    VendorDetailComponent,
+    VendorCreateComponent,
+    ProductListComponent,
+    ProductCreateComponent,
+    ProductEditComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,
