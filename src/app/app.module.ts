@@ -22,6 +22,17 @@ import { ProductListComponent } from './product/product-list/product-list.compon
 import { ProductCreateComponent } from './product/product-create/product-create.component';
 import { ProductEditComponent } from './product/product-edit/product-edit.component';
 import { ProductDetailComponent } from './product/product-detail/product-detail.component';
+import { SortPipe } from './core/pipes/sort.pipe';
+import { UserLoginComponent } from './user/user-login/user-login.component';
+import { RequestListComponent } from './request/request-list/request-list.component';
+import { RequestDetailComponent } from './request/request-detail/request-detail.component';
+import { RequestEditComponent } from './request/request-edit/request-edit.component';
+import { RequestCreateComponent } from './request/request-create/request-create.component';
+import { RequestLinesComponent } from './request/request-lines/request-lines.component';
+import { RequestReviewItemsComponent } from './request/request-review-items/request-review-items.component';
+import { RequestReviewListComponent } from './request/request-review-list/request-review-list.component';
+import { PasswordPipe } from './core/pipes/password.pipe';
+// import { RequestlineCreateComponent } from './requestline/requestline-create/requestline-create.component';
 
 
 @NgModule({
@@ -43,7 +54,18 @@ import { ProductDetailComponent } from './product/product-detail/product-detail.
     ProductListComponent,
     ProductCreateComponent,
     ProductEditComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    SortPipe,
+    UserLoginComponent,
+    RequestListComponent,
+    RequestDetailComponent,
+    RequestEditComponent,
+    RequestCreateComponent,
+    RequestLinesComponent,
+    RequestReviewItemsComponent,
+    RequestReviewListComponent,
+    PasswordPipe,
+    // RequestlineCreateComponent
   ],
   imports: [
     BrowserModule,

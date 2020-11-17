@@ -13,10 +13,18 @@ import { User } from '../user.class';
 export class UserListComponent implements OnInit {
 
   users: User[] = [];
-
+  sortCriteria: string = "userName";
+  ascSequence: boolean = false;
  
-  tableStyle : string = "table table-sm";
 
+  sortColumn(column: string): void {
+    if(column == this.sortCriteria) {
+      this.ascSequence = !this.ascSequence;
+      return;
+    }
+    this.sortCriteria = column;
+    this.ascSequence = true;
+  }
 
  
 

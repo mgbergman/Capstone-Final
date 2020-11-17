@@ -13,8 +13,16 @@ import { ProductListComponent } from './product/product-list/product-list.compon
 import { ProductEditComponent } from './product/product-edit/product-edit.component';
 import { ProductCreateComponent} from './product/product-create/product-create.component';
 import { ProductDetailComponent} from './product/product-detail/product-detail.component';
+import { E404Component} from './core/e404/e404.component';
+import { AboutComponent} from './core/about/about.component';
+import { UserLoginComponent} from './user/user-login/user-login.component';
+import { RequestListComponent} from './request/request-list/request-list.component';
+import { RequestDetailComponent} from './request/request-detail/request-detail.component';
+import { RequestCreateComponent } from './request/request-create/request-create.component';
+import { RequestReviewListComponent} from './request/request-review-list/request-review-list.component';
 
 const routes: Routes = [
+  {path: "", component: UserLoginComponent},
   {path: "user/list", component: UserListComponent},
   {path: "user/edit/:id", component: UserEditComponent},
   {path: "user/create", component: UserCreateComponent},
@@ -27,6 +35,16 @@ const routes: Routes = [
   {path: "product/edit/:id", component: ProductEditComponent},
   {path: "product/create", component: ProductCreateComponent},
   {path: "product/detail/:id", component: ProductDetailComponent},
+  {path: "about/list", component: AboutComponent},
+  {path: "request/list", component: RequestListComponent},
+  {path: "request/detail/:id", component: RequestDetailComponent},
+  {path: "request/create", component: RequestCreateComponent},
+  {path: "request/review", component: RequestReviewListComponent},
+  
+  
+  
+  
+  
   {path: "**", component: E404Component }
 ];
 

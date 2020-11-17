@@ -4,7 +4,7 @@ import { HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from './user.class';
 
-const baseurl = "http://localhost:8080/api/users/";
+const baseurl = "http://localhost:8080/api/users";
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +34,8 @@ export class UserService {
   remove(user: User): Observable<any>{ // added this function
     return this.http.delete(`${baseurl}/${user.id}`) as Observable<any>;
   }
-
+  login(userName: string , password: string): Observable<User>{
+    return this.http.get(`${baseurl}/${userName}/${password}`) as Observable<User>;
+  } 
 
 }

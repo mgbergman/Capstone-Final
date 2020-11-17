@@ -7,11 +7,14 @@
 </tr>
 
 
- 
+    <tr>
     <td>Vendor:</td>
     <td>
-        <input [(ngModel)]="product.vendor" type="text" size="10" >
+        <select [(ngModel)]="product.vendor">
+        <option *ngFor="let vendor of vendors" [ngValue]=vendor>{{vendor.name}}</option>
+        </select> 
     </td>
+</tr>
     <tr>
         <td>Part Number:</td>
         <td>
@@ -27,7 +30,7 @@
     <tr>
         <th>Price:</th>
         <td>
-            <input [(ngModel)]="product.price" type="password" size="10">
+            <input [(ngModel)]="product.price" type="text" size="10">
         </td>
     </tr>
     <tr>
