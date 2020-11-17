@@ -11,6 +11,18 @@ export class VendorListComponent implements OnInit {
 
   vendors: Vendor[] = [];
   tableStyle : string = "table table-sm";
+  sortCriteria: string = "name";
+  ascSequence: boolean = false;
+
+  sortColumn(column: string): void {
+    if(column == this.sortCriteria) {
+      this.ascSequence = !this.ascSequence;
+      return;
+    }
+    this.sortCriteria = column;
+    this.ascSequence = true;
+  }
+
 
   constructor(
     private vendorsrv: VendorService,

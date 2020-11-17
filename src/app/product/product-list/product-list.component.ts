@@ -11,6 +11,19 @@ import { Product } from '../product.class';
 export class ProductListComponent implements OnInit {
 
   products: Product[] = [];
+  sortCriteria: string = "name";
+  ascSequence: boolean = false;
+
+
+
+  sortColumn(column: string): void {
+    if(column == this.sortCriteria) {
+      this.ascSequence = !this.ascSequence;
+      return;
+    }
+    this.sortCriteria = column;
+    this.ascSequence = true;
+  }
 
   constructor(
 

@@ -3,9 +3,11 @@
 <a href="/vendor/create">Create</a> |
 <table class="table table-sm">
     <tr>
-    <th>Id</th>
+    <th><a (click)="sortColumn('id')" class="btn btn-link">Id</a></th>
+   
     <th>Code</th>
-    <th>Name</th>
+  
+    <th><a (click)="sortColumn('name')" class="btn btn-link">Name</a></th>
     <th>Address</th>
     <th>City</th>
     <th>State</th>
@@ -15,7 +17,7 @@
 
     </tr>
 
-    <tr *ngFor="let vendor of vendors" >
+    <tr *ngFor="let vendor of vendors|sort:sortCriteria:ascSequence" >
         <td>{{ vendor.id}}</td>
         <td>{{ vendor.code}}</td>
         <td>{{ vendor.name}}</td>
