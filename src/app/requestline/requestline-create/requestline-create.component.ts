@@ -16,31 +16,48 @@ export class RequestlineCreateComponent implements OnInit {
 
   requestline: RequestLine = new RequestLine();
   products : Product[] = [];
-  requests : Request[] = []
+  requests : Request= new Request();
   
   constructor(
     private productsvc: ProductService,
     private route: ActivatedRoute,
     private router: Router,
     private requestsvc: RequestService,
-    private requestlinesvc= RequestLineService
+    private requestlinesvc: RequestLineService
   ) { }
 
-  // save(): void{
-  //   this.requestlinesvc.create(this.requests).subscribe(
-  //     res=>{
-  //       console.debug("PRequest Line created:",res);
-  //       this.router.navigateByUrl("/RequestLine/list");
-  //     },
-  //     err => {
-  //       console.error("ERROR creating product:",err);
-  //     }
-  //   )
-  //   }
-  ngOnInit(): void {  this.requestsvc.list().subscribe(
-    res => { console.debug(res)
-    this.requests = res as Request[]}
-  );
+  newchanges(): void {
+  
+  }
+  
+  save(): void{
+    this.requestlinesvc.add(this.requestline).subscribe(
+      res=>{
+        console.debug("Request Line created:",res);
+        this.router.navigateByUrl(`/requests/lines/${this.requests.id}`);
+      },
+      err => {
+        console.error("ERROR creating product:",err);
+      }
+    )
+    }
+    ngOnInit(): void {
+      let id = this.route.snapshot.params.id;
+      
+      this.requestsvc.get(id).subscribe(
+        res => { console.debug(res)
+        this.requests = res;
+        this.requestline.request = this.requests;},
+        err => {
+          console.error(err);
+        }
+      );
+
+      this.productsvc.list().subscribe(
+        res =>
+        {console.log(res);
+        this.products = res as Product[]}
+      )
   }
 
 }

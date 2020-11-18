@@ -3,7 +3,7 @@ import { HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {RequestLine} from '../requestline/requestline.class';
 
-const baseurl = "http://localhost:8080/api/lines/";
+const baseurl = "http://localhost:8080/api/lines";
 
 @Injectable({
   providedIn: 'root'
@@ -28,5 +28,9 @@ export class RequestLineService {
     return this.http.delete(`${baseurl}/${requestLine.id}`) as Observable<any>;
 
   
+  }
+  add(requestLine: RequestLine): Observable<RequestLine>
+  {
+    return this.http.post(`${baseurl}/`, requestLine) as Observable<RequestLine>;
   }
 }

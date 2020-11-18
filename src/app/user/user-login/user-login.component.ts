@@ -11,16 +11,21 @@ import { UserService} from "../user.service";
   styleUrls: ['./user-login.component.css']
 })
 export class UserLoginComponent implements OnInit {
-  user: User = new User();
+  user: User = null;
   message: string = 'Please Login'
+
+  userName = '';
+  password = '';
+
 
   login(): void {
     
-    this.usersvc.login(this.user.userName, this.user.password ).subscribe(
+    this.usersvc.login(this.userName, this.password ).subscribe(
       res => {
-         this.systemsvc.loggedInUser = res;
+         this.user = res as User;
+         this.systemsvc.loggedInUser = this.user;
          console.debug("User:", res);
-         this.router.navigateByUrl("/request/create");
+         this.router.navigateByUrl("/request/list");
       },
       err => {
         this.message = "User Name/Password not found";       
@@ -38,6 +43,9 @@ export class UserLoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.userName = 'mgbergman';
+    this.password = 'bryan1123';
+    this.systemsvc.loggedInUser = null;
   }
 
 }

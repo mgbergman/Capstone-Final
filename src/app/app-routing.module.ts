@@ -20,6 +20,8 @@ import { RequestListComponent} from './request/request-list/request-list.compone
 import { RequestDetailComponent} from './request/request-detail/request-detail.component';
 import { RequestCreateComponent } from './request/request-create/request-create.component';
 import { RequestReviewListComponent} from './request/request-review-list/request-review-list.component';
+import { RequestlineCreateComponent} from './requestline/requestline-create/requestline-create.component';
+import { RequestlineEditComponent} from './requestline/requestline-edit/requestline-edit.component';
 
 const routes: Routes = [
   {path: "", component: UserLoginComponent},
@@ -40,8 +42,8 @@ const routes: Routes = [
   {path: "request/detail/:id", component: RequestDetailComponent},
   {path: "request/create", component: RequestCreateComponent},
   {path: "request/review", component: RequestReviewListComponent},
-  
-  
+  {path: "requestline/create", component: RequestlineCreateComponent},
+  {path: "requestline/edit/:id", component: RequestlineEditComponent},
   
   
   

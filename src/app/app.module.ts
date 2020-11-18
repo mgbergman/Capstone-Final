@@ -32,7 +32,8 @@ import { RequestLinesComponent } from './request/request-lines/request-lines.com
 import { RequestReviewItemsComponent } from './request/request-review-items/request-review-items.component';
 import { RequestReviewListComponent } from './request/request-review-list/request-review-list.component';
 import { PasswordPipe } from './core/pipes/password.pipe';
-// import { RequestlineCreateComponent } from './requestline/requestline-create/requestline-create.component';
+import { RequestlineEditComponent } from './requestline/requestline-edit/requestline-edit.component';
+import { RequestlineCreateComponent } from './requestline/requestline-create/requestline-create.component';
 
 
 @NgModule({
@@ -65,7 +66,8 @@ import { PasswordPipe } from './core/pipes/password.pipe';
     RequestReviewItemsComponent,
     RequestReviewListComponent,
     PasswordPipe,
-    // RequestlineCreateComponent
+    RequestlineEditComponent,
+    RequestlineCreateComponent
   ],
   imports: [
     BrowserModule,
