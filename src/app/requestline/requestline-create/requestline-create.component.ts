@@ -26,15 +26,15 @@ export class RequestlineCreateComponent implements OnInit {
     private requestlinesvc: RequestLineService
   ) { }
 
-  newchanges(): void {
+  // newchanges(): void {
   
-  }
+  // }
   
   save(): void{
     this.requestlinesvc.add(this.requestline).subscribe(
       res=>{
         console.debug("Request Line created:",res);
-        this.router.navigateByUrl(`/requests/lines/${this.requests.id}`);
+        this.router.navigateByUrl(`/lines/${this.requests.id}`);
       },
       err => {
         console.error("ERROR creating product:",err);

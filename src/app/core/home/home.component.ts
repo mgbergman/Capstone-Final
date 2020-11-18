@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SystemService } from 'src/app/system.service';
+import { User } from 'src/app/user/user.class';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  user: User = null
 
-  constructor() { }
+  constructor(
+    private systemsvc: SystemService
+  ) { }
 
   ngOnInit(): void {
+    this.user = this.systemsvc.loggedInUser;
   }
 
 }

@@ -1,5 +1,13 @@
 <app-menu></app-menu>
-
+<tr>
+    <td>RequestLine ID:</td>
+    <td>
+        
+            <input [(ngModel)]="requestline.id" type="text" size="10"
+            >
+    
+    </td>
+</tr>
 
     <tr>
     <td>Request ID:</td>
@@ -13,9 +21,8 @@
     <tr>
         <td>Product</td>
         <td>
-            <select [(ngModel)]="requestline.product" (click)="newchanges()">
-                    <option *ngFor="let product of products" [ngValue]="product">{{product.name}}</option>
-                </select>
+            <input [(ngModel)]="requestline.product" type="text" size="10"
+            >
         </td>
     </tr>
     <tr>
