@@ -26,38 +26,57 @@ export class RequestlineCreateComponent implements OnInit {
     private requestlinesvc: RequestLineService
   ) { }
 
-  // newchanges(): void {
+  newChanges(): void {
   
-  // }
+  }
   
   save(): void{
     this.requestlinesvc.add(this.requestline).subscribe(
       res=>{
         console.debug("Request Line created:",res);
-        this.router.navigateByUrl(`/lines/${this.requests.id}`);
+        this.router.navigateByUrl(`/requests/lines/${this.requests.id}`);
       },
       err => {
         console.error("ERROR creating product:",err);
       }
-    )
-    }
-    ngOnInit(): void {
+    );
+  }
+    ngOnInit(): void 
+    {
       let id = this.route.snapshot.params.id;
       
       this.requestsvc.get(id).subscribe(
-        res => { console.debug(res)
+        res => { 
+        console.debug(res)
         this.requests = res;
-        this.requestline.request = this.requests;},
+        this.requestline.request = this.requests;
+      },
         err => {
           console.error(err);
         }
       );
-
       this.productsvc.list().subscribe(
         res =>
         {console.log(res);
-        this.products = res as Product[]}
+        this.products = res as Product[]
+      },
+      err =>
+      {
+        console.error(err);
+      }
       )
+    }
   }
+    
+        
+    
+    
+    
+ 
+ 
+    
+      
+    
+  
 
-}
+

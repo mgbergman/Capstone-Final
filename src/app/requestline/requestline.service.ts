@@ -17,6 +17,10 @@ export class RequestLineService {
   create (requestLine: RequestLine): Observable<RequestLine> {
     return this.http.post(`${baseurl}`, requestLine) as Observable<RequestLine>;
   }
+  getLines(id: number): Observable<RequestLine[]>
+  {
+    return this.http.get(`${baseurl}/for-req/${id}`) as Observable<RequestLine[]>;
+  }
 
   get(id: number): Observable<RequestLine> {
     return this.http.get(`${baseurl}/${id}`) as Observable<RequestLine>;
@@ -31,6 +35,6 @@ export class RequestLineService {
   }
   add(requestLine: RequestLine): Observable<RequestLine>
   {
-    return this.http.post(`${baseurl}/`, requestLine) as Observable<RequestLine>;
+    return this.http.post(`${baseurl}/${requestLine.id}`, requestLine) as Observable<RequestLine>;
   }
 }

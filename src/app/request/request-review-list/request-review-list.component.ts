@@ -23,7 +23,7 @@ export class RequestReviewListComponent implements OnInit {
     this.user = this.systemsrv.loggedInUser;
 
 
-    this.requestsrv./*requests(this.user.id)*/list().subscribe(
+    this.requestsrv.requests(this.user.id).subscribe(
       
       res => { console.log(res); 
       this.requests= res as Request[]
