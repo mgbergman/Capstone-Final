@@ -33,13 +33,21 @@ export class RequestService {
     return this.http.get(`${baseurl}/reviews/${id}`) as Observable<Request[]>;
   }
 
-  // review(request: Request): Observable <Request> {
-  //     return this.http.put(`${baseurl}/${request.id}/approve`) as Observable <Request>;
-  // }
+  review(request: Request): Observable <Request> {
+      return this.http.put(`${baseurl}/review`, request) as Observable <Request>;
+  }
 
-  // approveRequest():
+  approve(request: Request): Observable <Request> {
+    return this.http.put(`${baseurl}/approve`, request) as Observable <Request>;
+}
 
-  // rejectRequest():
+reject(request: Request): Observable <Request> {
+  return this.http.put(`${baseurl}/reject`, request) as Observable <Request>;
+}
+add(request: Request): Observable<Request>
+{
+  return this.http.post(`${baseurl}/`, request) as Observable<Request>;
+}
 
 
 

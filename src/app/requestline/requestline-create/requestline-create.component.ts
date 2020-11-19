@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { RequestLineService} from 'src/app/requestline/requestline.service';
+import { Request } from '../../request/request.class';
 import { RequestLine } from '../requestline.class';
-import { Request } from 'src/app/request/request.class';
-import { RequestService} from 'src/app/request/request.service';
+import { RequestLineService } from '../requestline.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { RequestService } from 'src/app/request/request.service';
 import { Product } from 'src/app/product/product.class';
-import { ProductService} from 'src/app/product/product.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ProductService } from 'src/app/product/product.service';
+import { SystemService } from 'src/app/system.service';
 
 @Component({
   selector: 'app-requestline-create',
@@ -14,69 +15,73 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class RequestlineCreateComponent implements OnInit {
 
+  request: Request = new Request();
   requestline: RequestLine = new RequestLine();
-  products : Product[] = [];
-  requests : Request= new Request();
-  
+  products: Product[] = [];
+  buttonsav: string = "btn btn-primary";
+  buttondel: string = "btn btn-danger";
+  Msg: string = "Save";
+
   constructor(
+    private requestsvc: RequestService,
+    private requestlinesvc: RequestLineService,
     private productsvc: ProductService,
     private route: ActivatedRoute,
-    private router: Router,
-    private requestsvc: RequestService,
-    private requestlinesvc: RequestLineService
+    private systemsvc: SystemService,
+    private router: Router
+
   ) { }
 
-  newChanges(): void {
-  
-  }
-  
-  save(): void{
-    this.requestlinesvc.add(this.requestline).subscribe(
-      res=>{
-        console.debug("Request Line created:",res);
-        this.router.navigateByUrl(`/requests/lines/${this.requests.id}`);
+  ngOnInit(): void {
+    this.systemsvc.checkLogin();
+    let id = this.route.snapshot.params.id;
+
+    this.requestsvc.get(id).subscribe(
+      res => {
+        console.debug("Request:", res);
+        this.request = res;
+        this.requestline.request = this.request;
       },
       err => {
-        console.error("ERROR creating product:",err);
-      }
-    );
-  }
-    ngOnInit(): void 
-    {
-      let id = this.route.snapshot.params.id;
-      
-      this.requestsvc.get(id).subscribe(
-        res => { 
-        console.debug(res)
-        this.requests = res;
-        this.requestline.request = this.requests;
-      },
-        err => {
-          console.error(err);
-        }
-      );
-      this.productsvc.list().subscribe(
-        res =>
-        {console.log(res);
-        this.products = res as Product[]
-      },
-      err =>
-      {
         console.error(err);
       }
+      );
+      this.productsvc.list().subscribe(
+        res => 
+        {
+          console.log(res);
+          this.products = res as Product[];
+        },
+        err =>
+        {
+          console.error(err);
+        }
       )
     }
+    new(): void
+    {
+      this.buttonsav = "btn btn-primary";
+      this.Msg = "Save";
+    }
+
+    save(): void
+    {
+      console.log(this.requestline);
+      this.requestlinesvc.add(this.requestline).subscribe(
+        res => {
+          console.debug("Save");
+          this.router.navigateByUrl(`/requests/lines/${this.request.id}`);
+         
+        },
+        err => {
+     
+          console.error("Could not add request: ", err);
+        }
+      );
+    }
   }
-    
-        
-    
-    
-    
- 
- 
-    
-      
-    
+
+
   
 
 

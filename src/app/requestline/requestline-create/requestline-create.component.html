@@ -1,31 +1,39 @@
 <app-menu></app-menu>
-<tr>
-    <td>Request ID:</td>
-    <td>
-        
-    <input [(ngModel)]="requests.id" type="text" size="10" disabled>
-    
-    </td>
-</tr>
-
-<tr>
-    <td>Product:</td>
-    <td>
-        <select [(ngModel)]="requestline.product" (click)="newChanges()">
-        <option *ngFor="let product of products" [ngValue]="product">{{product.name}}</option>
-        </select> 
-    </td>
-</tr>
-    <tr>
-        <th>Quantity</th>
-        <td>
-            <input [(ngModel)]="requestline.quantity" type="text" size="30">
-        </td>
-    </tr>
-    
-
-    <tr>
-        <td colspan="2">
-            <button (click)="save()" class= "btn btn-primary">Save</button>
-        </td>
-    </tr>
+<div><span class="h3">Details for New Line Item</span></div>
+<table class="table">
+    <tbody>
+        <tr>
+            <th scope="row">Requestline ID</th>
+            <td><input [(ngModel)]="requestline.id" type="text" disabled></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th scope="row">Request ID</th>
+            <td><input [(ngModel)]="request.id" type="text" disabled></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th scope="row">Product</th>
+            <td>
+                <select [(ngModel)]="requestline.product" (click)="new()">
+                    <option *ngFor="let product of products" [ngValue]="product">{{product.name}}</option>
+                </select>
+            </td>
+ 
+        </tr>
+        <tr>
+            <th scope="row">Quantity</th>
+            <td><input [(ngModel)]="requestline.quantity" type="text" (click)="new()"></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <button type="button"  [ngClass]="buttonsav" class="btn btn-primary" (click)="save()">Save</button>
+            </td>
+            <td>
+                <button type="button"  [ngClass]="buttondel" class="btn btn-danger" routerLink="/requests/lines/{{request.id}}">Discard New Line Item</button>
+            </td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>

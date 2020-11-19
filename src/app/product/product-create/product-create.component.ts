@@ -38,7 +38,8 @@ export class ProductCreateComponent implements OnInit {
   ngOnInit(): void {
     this.vendorsvc.list().subscribe(
       res => { console.debug(res)
-      this.vendors = res as Vendor[]}
+      this.vendors = res as Vendor[]
+    }
     );
   }
 

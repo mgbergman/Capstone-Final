@@ -1,23 +1,26 @@
 <app-menu></app-menu>
+<!-- <div><span class="h3" *ngIf="request.user.userName != null">Request Lines for {{request.user.userName}}'s Request from {{request.submittedDate}}</span></div> -->
 <div class="h3">Request  </div>
- <tr>
-        <td colspan="2">
-            <a href="/requestline/create">Create</a>
-        </td>
-    </tr>
+<a href="/requestline/create">Create</a>
 <table class="table table-sm">
+    <thead>
     <tr>
     <th>Id</th>
     <th>User</th>
     <th>Description</th>
     <th>Status</th>
     <th>Total</th>
+</thead>
 
+<tbody *ngIf = "request">
+    <tr>
     <td>{{ request.id}}</td>
     <td>{{ request.user.userName}}</td>
     <td>{{ request.description}}</td>
     <td>{{ request.status}}</td>
+    <td>{{ request.total}}</td>
+</tr>
+</tbody>
 
-   
+</table>
 
-   

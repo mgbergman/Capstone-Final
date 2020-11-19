@@ -27,7 +27,7 @@ import { UserLoginComponent } from './user/user-login/user-login.component';
 import { RequestListComponent } from './request/request-list/request-list.component';
 import { RequestDetailComponent } from './request/request-detail/request-detail.component';
 import { RequestEditComponent } from './request/request-edit/request-edit.component';
-import { RequestCreateComponent } from './request/request-create/request-create.component';
+
 import { RequestLinesComponent } from './request/request-lines/request-lines.component';
 import { RequestReviewItemsComponent } from './request/request-review-items/request-review-items.component';
 import { RequestReviewListComponent } from './request/request-review-list/request-review-list.component';
@@ -62,7 +62,7 @@ import { RequestlineComponent } from './requestline/requestline.component';
     RequestListComponent,
     RequestDetailComponent,
     RequestEditComponent,
-    RequestCreateComponent,
+   
     RequestLinesComponent,
     RequestReviewItemsComponent,
     RequestReviewListComponent,

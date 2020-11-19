@@ -18,12 +18,12 @@ import { AboutComponent} from './core/about/about.component';
 import { UserLoginComponent} from './user/user-login/user-login.component';
 import { RequestListComponent} from './request/request-list/request-list.component';
 import { RequestDetailComponent} from './request/request-detail/request-detail.component';
-import { RequestCreateComponent } from './request/request-create/request-create.component';
 import { RequestReviewListComponent} from './request/request-review-list/request-review-list.component';
-import { RequestlineCreateComponent} from './requestline/requestline-create/requestline-create.component';
 import { RequestlineEditComponent} from './requestline/requestline-edit/requestline-edit.component';
 import { RequestEditComponent } from './request/request-edit/request-edit.component';
 import { RequestlineComponent } from './requestline/requestline.component';
+import { RequestlineCreateComponent } from './requestline/requestline-create/requestline-create.component';
+import { RequestCreateComponent } from './request/request-create/request-create.component';
 
 const routes: Routes = [
   {path: "", component: UserLoginComponent},
@@ -42,12 +42,12 @@ const routes: Routes = [
   {path: "about/list", component: AboutComponent},
   {path: "request/list", component: RequestListComponent},
   {path: "request/detail/:id", component: RequestDetailComponent},
-  {path: "request/create", component: RequestCreateComponent},
   {path: "request/edit/:id", component: RequestEditComponent},
   {path: "request/review", component: RequestReviewListComponent},
-  {path: "requestline/create", component: RequestlineCreateComponent},
   {path: "requestline/edit/:id", component: RequestlineEditComponent},
-  {path: "requestline", component: RequestlineComponent},
+  {path: "request/lines/:id", component: RequestlineComponent},
+  {path: "request/lines/create/:id", component: RequestlineCreateComponent},
+  {path: "request/create", component: RequestCreateComponent},
   
   
   
