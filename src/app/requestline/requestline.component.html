@@ -1,1 +1,23 @@
-<p>requestline works!</p>
+<app-menu></app-menu>
+<div class="h3">Request  </div>
+ <tr>
+        <td colspan="2">
+            <a href="/requestline/create">Create</a>
+        </td>
+    </tr>
+<table class="table table-sm">
+    <tr>
+    <th>Id</th>
+    <th>User</th>
+    <th>Description</th>
+    <th>Status</th>
+    <th>Total</th>
+
+    <td>{{ request.id}}</td>
+    <td>{{ request.user.userName}}</td>
+    <td>{{ request.description}}</td>
+    <td>{{ request.status}}</td>
+
+   
+
+   

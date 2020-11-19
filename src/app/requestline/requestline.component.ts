@@ -14,7 +14,16 @@ import { SystemService } from '../system.service';
 })
 export class RequestlineComponent implements OnInit {
 
-  constructor() { }
+  request: Request;
+  lines: RequestLine[];
+
+  constructor(
+    private requestsvc: RequestService,
+    private requestlinessvc: RequestLineService,
+    private systemsvc: SystemService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
