@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../product.service';
 import { Product } from '../product.class';
+import { Vendor } from 'src/app/vendor/vendor.class';
+import { VendorService } from 'src/app/vendor/vendor.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -11,6 +13,7 @@ import { Product } from '../product.class';
 
 export class ProductDetailComponent implements OnInit {
   product: Product = new Product();
+  vendors : Vendor[];
   isHidden: boolean = true;
 
   VerifyDelete() {
@@ -33,6 +36,7 @@ export class ProductDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private productsvc: ProductService,
+    private vendorsvc: VendorService,
     private router: Router
   ) { }
 

@@ -35,6 +35,7 @@ import { PasswordPipe } from './core/pipes/password.pipe';
 import { RequestlineEditComponent } from './requestline/requestline-edit/requestline-edit.component';
 import { RequestlineCreateComponent } from './requestline/requestline-create/requestline-create.component';
 import { RequestlineComponent } from './requestline/requestline.component';
+import { RequestCreateComponent } from './request/request-create/request-create.component';
 
 
 @NgModule({
@@ -62,14 +63,14 @@ import { RequestlineComponent } from './requestline/requestline.component';
     RequestListComponent,
     RequestDetailComponent,
     RequestEditComponent,
-   
     RequestLinesComponent,
     RequestReviewItemsComponent,
     RequestReviewListComponent,
     PasswordPipe,
     RequestlineEditComponent,
     RequestlineCreateComponent,
-    RequestlineComponent
+    RequestlineComponent,
+    RequestCreateComponent
   ],
   imports: [
     BrowserModule,

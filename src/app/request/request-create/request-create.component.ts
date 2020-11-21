@@ -1,55 +1,54 @@
 import { Component, OnInit } from '@angular/core';
 import { Request } from '../request.class';
 import { RequestService } from '../request.service';
-import { Router } from '@angular/router';
+import { User } from 'src/app/user/user.class';
+import { UserService } from 'src/app/user/user.service';
+import { ActivatedRoute, Router} from '@angular/router';
+import { HttpClient} from '@angular/common/http';
 import { SystemService } from 'src/app/system.service';
-import { User } from 'src/app/user/user.class'
 
 @Component({
   selector: 'app-request-create',
   templateUrl: './request-create.component.html',
   styleUrls: ['./request-create.component.css']
 })
-export class RequestCreateComponent implements OnInit 
-{
+
+
+
+export class RequestCreateComponent implements OnInit {
+
+  users : User[] =[];
+
   request: Request = new Request();
-  buttonsav: string = "btn btn-primary";
-  buttondel: string = "btn btn-danger";
-  saveMsg: string = "Save";
-  user: User [] = [];
+  save(): void{
+    this.requestsvc.create(this.request).subscribe(
+      res=>{
+        console.debug("Request created:",res);
+        this.router.navigateByUrl("/request/list");
+      },
+      err => {
+        console.error("ERROR creating request:",err);
+      }
+    )
+  }
+
 
   constructor(
     private requestsvc: RequestService,
     private systemsvc: SystemService,
-    private router: Router
+    private router: Router,
+    private usersvc: UserService
+
   ) { }
 
-  ngOnInit(): void 
-  {
-    this.systemsvc.checkLogin();
-    this.request.user = this.systemsvc.loggedInUser;
+  ngOnInit(): void {
+    this.usersvc.list().subscribe(
+      res => { console.debug(res)
+      this.users = res as User[]
   }
-
-  new(): void
-  {
-    this.buttonsav = "btn btn-primary";
-
-  }
-
-  save(): void
-  {
-    this.requestsvc.add(this.request).subscribe(
-      res => {
-        console.debug("Saved!");
-        this.router.navigateByUrl("/requests");
-        this.buttonsav = "btn btn-success";
-        this.saveMsg = "Saved!";
-      },
-      err => {
-        this.buttonsav = "btn btn-danger";
-        this.saveMsg = "Failed!";
-        console.error("Could not add Request: ", err);
-      }
-    );
-  }
+    )}
 }
+
+
+
+

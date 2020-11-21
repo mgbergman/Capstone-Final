@@ -16,6 +16,7 @@ export class RequestlineComponent implements OnInit {
 
   request: Request;
   requestlines: RequestLine[];
+  id: number = 0;
 
   constructor(
     private requestsvc: RequestService,
@@ -28,9 +29,9 @@ export class RequestlineComponent implements OnInit {
   ngOnInit(): void {
     this.systemsvc.checkLogin();
 
-    let id = this.route.snapshot.params.id;
-
-    this.requestsvc.get(id).subscribe(
+    this.id = this.route.snapshot.params.id;
+    console.log(this.id);
+    this.requestsvc.get(this.id).subscribe(
       res => {
         console.debug("Request:", res);
         this.request = res;
@@ -40,7 +41,7 @@ export class RequestlineComponent implements OnInit {
       }
     );
 
-    this.requestlinessvc.getLines(id).subscribe(
+    this.requestlinessvc.getLines(this.id).subscribe(
       res => {
         console.debug("Request Lines:", res);
         this.requestlines = res;
@@ -54,9 +55,9 @@ export class RequestlineComponent implements OnInit {
 
   refreshLines():void
   {
-    let id = this.route.snapshot.params.id;
+    this.rID = this.route.snapshot.params.id;
 
-    this.requestlinessvc.getLines(id).subscribe(
+    this.requestlinessvc.getLines(this.rID).subscribe(
       res => {
         console.debug("Request Lines:", res);
         this.requestlines = res;
@@ -97,19 +98,19 @@ export class RequestlineComponent implements OnInit {
     )
   }
 
-  deleteLine(line:RequestLine):void
-  {
-    this.requestlinessvc.delete(line).subscribe(
-      res => {
-        console.debug("Line Item deleted!");
-        this.refreshLines();
-        this.refreshRequest();
-      },
-      err => {
-        console.error("Could not delete line item: ", err);
-      }
-    );
-  }
+  // deleteLine(id : number):void
+  // {
+  //   this.requestlinessvc.delete({id}).subscribe(
+  //     res => {
+  //       console.debug("Line Item deleted!");
+  //       this.refreshLines();
+  //       this.refreshRequest();
+  //     },
+  //     err => {
+  //       console.error("Could not delete line item: ", err);
+  //     }
+  //   );
+  // }
   }
 
 

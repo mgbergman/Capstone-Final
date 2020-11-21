@@ -12,7 +12,7 @@ import { User } from 'src/app/user/user.class';
 export class RequestReviewListComponent implements OnInit {
 
   requests: Request[] = [];
-  user: User = new User();
+  users: User = new User();
   
   constructor(
     private requestsrv: RequestService,
@@ -20,10 +20,10 @@ export class RequestReviewListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.user = this.systemsrv.loggedInUser;
+    this.users = this.systemsrv.loggedInUser;
 
 
-    this.requestsrv.requests(this.user.id).subscribe(
+    this.requestsrv.requests(this.users.id).subscribe(
       
       res => { console.log(res); 
       this.requests= res as Request[]

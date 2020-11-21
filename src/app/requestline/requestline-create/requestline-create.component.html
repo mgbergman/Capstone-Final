@@ -2,20 +2,11 @@
 <div><span class="h3">Details for New Line Item</span></div>
 <table class="table">
     <tbody>
-        <tr>
-            <th scope="row">Requestline ID</th>
-            <td><input [(ngModel)]="requestline.id" type="text" disabled></td>
-            <td></td>
-        </tr>
-        <tr>
-            <th scope="row">Request ID</th>
-            <td><input [(ngModel)]="request.id" type="text" disabled></td>
-            <td></td>
-        </tr>
+
         <tr>
             <th scope="row">Product</th>
             <td>
-                <select [(ngModel)]="requestline.product" (click)="new()">
+                <select [(ngModel)]="requestline.product">
                     <option *ngFor="let product of products" [ngValue]="product">{{product.name}}</option>
                 </select>
             </td>
@@ -31,7 +22,7 @@
                 <button type="button"  [ngClass]="buttonsav" class="btn btn-primary" (click)="save()">Save</button>
             </td>
             <td>
-                <button type="button"  [ngClass]="buttondel" class="btn btn-danger" routerLink="/requests/lines/{{request.id}}">Discard New Line Item</button>
+                <button type="button"  [ngClass]="buttondel" class="btn btn-danger" routerLink="/request/list">Discard New Line Item</button>
             </td>
             <td></td>
         </tr>

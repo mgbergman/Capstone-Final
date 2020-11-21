@@ -12,7 +12,6 @@ export class Request {
     submittedDate:          string = "";
     reasonForRejection:     string = "";
 
-    userId: number = 0;
     user: User = null;
     userName: string ="";
 
@@ -20,3 +19,4 @@ constructor() {
 }
 
 }
+

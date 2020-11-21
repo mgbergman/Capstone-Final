@@ -21,6 +21,7 @@ export class RequestlineCreateComponent implements OnInit {
   buttonsav: string = "btn btn-primary";
   buttondel: string = "btn btn-danger";
   Msg: string = "Save";
+  rlID: number = 0;
 
   constructor(
     private requestsvc: RequestService,
@@ -33,48 +34,33 @@ export class RequestlineCreateComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.systemsvc.checkLogin();
-    let id = this.route.snapshot.params.id;
 
+    
+    let id = this.route.snapshot.params.id;
+    console.log(id);
     this.requestsvc.get(id).subscribe(
-      res => {
-        console.debug("Request:", res);
-        this.request = res;
-        this.requestline.request = this.request;
+      
+      res => {console.log(res);this.requestline.request = res;},
+      err => {console.error("Failed to read", err)}
+    )
+    this.productsvc.list().subscribe(
+      res => {console.log("Request:", res); this.products = res as Product[];
       },
       err => {
-        console.error(err);
-      }
+        console.error("Error Reading Request",err);}
       );
-      this.productsvc.list().subscribe(
-        res => 
-        {
-          console.log(res);
-          this.products = res as Product[];
-        },
-        err =>
-        {
-          console.error(err);
-        }
-      )
     }
-    new(): void
-    {
-      this.buttonsav = "btn btn-primary";
-      this.Msg = "Save";
-    }
+   
 
     save(): void
     {
       console.log(this.requestline);
-      this.requestlinesvc.add(this.requestline).subscribe(
+      this.requestlinesvc.create(this.requestline).subscribe(
         res => {
-          console.debug("Save");
-          this.router.navigateByUrl(`/requests/lines/${this.request.id}`);
-         
+          console.log("Save");
+          this.router.navigateByUrl(`/request/lines/${this.rlID}`); 
         },
         err => {
-     
           console.error("Could not add request: ", err);
         }
       );

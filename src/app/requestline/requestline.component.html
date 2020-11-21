@@ -1,8 +1,8 @@
 <app-menu></app-menu>
-<!-- <div><span class="h3" *ngIf="request.user.userName != null">Request Lines for {{request.user.userName}}'s Request from {{request.submittedDate}}</span></div> -->
-<div class="h3">Request  </div>
+<div><span class="h3" >Request Lines </span></div>
+
 <a href="/requestline/create">Create</a>
-<table class="table table-sm">
+<table class="table table-sm" *ngIf="request ">
     <thead>
     <tr>
     <th>Id</th>
@@ -12,15 +12,43 @@
     <th>Total</th>
 </thead>
 
-<tbody *ngIf = "request">
+<tbody>
     <tr>
     <td>{{ request.id}}</td>
     <td>{{ request.user.userName}}</td>
     <td>{{ request.description}}</td>
     <td>{{ request.status}}</td>
     <td>{{ request.total}}</td>
+   <td><button type="button" class="btn btn-primary" (click)="submit()" *ngIf='request.status != "Approved"' ng-disabled="request.total == 0">Submit For Review</button></td>
 </tr>
 </tbody>
+<br>
+<div>
+    <span class="h3">Line Items</span>
+    <span><button type="button" class="btn btn-primary" routerLink="/request/lines/create/{{request.id}}">Add</button></span>
+</div>
 
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th scope="col">Product</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Total</th>
+            <th scop="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let line of requestlines">
+            <th></th>
+            <td>{{line.product.name}}</td>
+            
+            <td>{{line.quantity}}</td>
+            <td>${{line.quantity*line.product.price}}</td>
+            <td *ngIf='request.status != "Approved"'>
+                <a routerLink="/requestline/edit/{{line.id}}">Edit</a> 
+
+            </td>
+        </tr>
+    </tbody>
 </table>
-
